@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle Contact Form Submission
     const contactForm = document.getElementById('inquiryForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Get values
@@ -97,10 +97,32 @@ document.addEventListener('DOMContentLoaded', () => {
             const message = document.getElementById('message').value;
             
             if(name && phone && message) {
-                // Since this is a static site without a backend, we'll just show an alert
-                // In a real scenario, this could send an email via Formspree or similar service
-                alert(`Thank you for your inquiry, ${name}! We will get back to you at ${phone} soon.`);
-                contactForm.reset();
+                const submitBtn = contactForm.querySelector('.submit-btn');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: contactForm.method,
+                        body: new FormData(contactForm),
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        alert(`Thank you for your inquiry, ${name}! We will get back to you at ${phone} soon.`);
+                        contactForm.reset();
+                    } else {
+                        alert('Oops! There was a problem submitting your form. Please try again.');
+                    }
+                } catch (error) {
+                    alert('Oops! There was a network error. Please check your connection and try again.');
+                } finally {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
             }
         });
     }

@@ -524,9 +524,8 @@ section:nth-child(odd) {
 
 /* --- Food Section --- */
 .food-content {
-    display: flex;
-    align-items: center;
-    gap: 50px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .food-info {
@@ -537,11 +536,77 @@ section:nth-child(odd) {
     font-size: 1.1rem;
     color: var(--text-light);
     margin-bottom: 30px;
+    text-align: center;
 }
 
-.meal-timings h3 {
-    margin-bottom: 20px;
+.food-cost {
+    margin: 30px 0;
+    max-width: 400px;
+}
+
+.highlight-card {
+    border-left-color: var(--primary-color) !important;
+    background-color: var(--primary-light) !important;
+}
+
+.cost-note {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.cost-note i {
     color: var(--primary-color);
+    margin-right: 5px;
+}
+
+.menu-container {
+    margin-top: 40px;
+}
+
+.menu-container h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-sm);
+}
+
+.menu-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--bg-white);
+    min-width: 700px;
+}
+
+.menu-table th, .menu-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.menu-table th {
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+    font-weight: 600;
+}
+
+.menu-table tbody tr:hover {
+    background-color: var(--bg-light);
+}
+
+.menu-note {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    background-color: var(--secondary-light);
+    padding: 15px;
+    border-radius: var(--radius-sm);
+    border-left: 4px solid var(--secondary-color);
 }
 
 .timing-card {
@@ -576,8 +641,65 @@ section:nth-child(odd) {
     color: var(--text-dark);
 }
 
-.food-image {
-    flex: 1;
+/* --- Kitchen Section --- */
+.kitchen-desc {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.kitchen-desc p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+
+.kitchen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.kitchen-card {
+    background-color: var(--bg-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    height: 100%;
+}
+
+.facility-list {
+    padding: 20px 30px 30px;
+}
+
+.facility-list li {
+    margin-bottom: 15px;
+    color: var(--text-dark);
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    line-height: 1.4;
+}
+
+.facility-list li:last-child {
+    margin-bottom: 0;
+}
+
+.facility-list i.fa-check {
+    color: #4CAF50;
+    margin-top: 3px;
+}
+
+.facility-list i.fa-triangle-exclamation {
+    color: #FF9800;
+    margin-top: 3px;
+}
+
+.kitchen-card .timing-card {
+    margin: 0 20px 20px;
+}
+
+.kitchen-card .timing-card:first-of-type {
+    margin-top: 20px;
 }
 
 /* --- Gallery Section --- */
